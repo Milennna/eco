@@ -1,0 +1,60 @@
+##########################################################################################################################
+NAPOMENA: U nastavku je dat test scenarijo za koji treba napistai test skriptu. 
+Ko pre zavrsetka kursa zavrsi sve stavke, pise u nastavku ovog teksta svoj test scenarijo za koji ce prosiriti skriptu.
+#########################################################################################################################
+
+#######RISTUPNI PODACI ZA RAD SA BAZOM##########
+PhpMyAdmin se nalazi na: http://ecotest.school.cubes.rs/phpmyadmin
+
+Parametri za kacenje na bazu:
+MySQL Host: 136.243.5.37
+MySQL Port: 33063
+MySQL User: root
+MySQL Pass: cubesqa
+
+
+###########LOG IN##########################
+1. Korisnik odlazi na web adresu:
+
+http://ecotest.school.cubes.rs/admin_session/login
+
+username: admin
+password: cubesqa
+
+#####KREIRANJE NOVOG INDEX SLIDERA########
+2. Korisnik bira 'Index Slider' i bira opciju 'Add index Slide'
+2.1. Korisnik unosi proizvoljne vrednosti na tile i description polja.
+2.2. Korisnik bira iz combo boxa 'Link type' opciju 'Link to internal url'
+2.3. Korisnik unosi proizvoljan text na 'Link Label' polje
+2.4. Korisnik unosi proizvoljan url na polje 'Internal Link Url'( url mora biti u validnom formatu  npr: http://prozivoljantext.com)
+2.5. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+2.6. Test proverava da li je entitet sacuvan u bazi
+
+#####EDITOVANJE INDEX SLIDERA########
+3. Korisnik bira poslednji index slider iz tabele i bira opciju 'Edit'
+3.1. Korisnik unosi proizvoljne vrednosti na tile i description polja.
+3.2. Korisnik bira iz combo boxa 'Link type' opciju 'Link to external site'
+3.3. Korisnik unosi proizvoljan text na 'Link Label' polje
+3.4. Korisnik unosi proizvoljan url na polje 'Internal Link Url'( url mora biti u validnom formatu  npr: http://prozivoljantext.com)
+3.5. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+3.6. Test proverava da li su promene sacuvane u bazi
+
+####BRISANJE INDEX SLIDERA########
+4. Korisnik bira poslednji index slider iz tabele i bira opciju 'Delete'
+4.1. Test proverava da li je entitet izbrisan iz baze
+
+####KREIRANJE NOVE FOTO GALERIJE#####
+5. Korisnik bira 'Photo GAlleries' i bira opciju 'Add photo gallery'
+5.1. Korisnik unosi proizvoljne vrednosti na tile i description polja
+5.2. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+5.3. Test proverava da li je entitet sacuvan u bazi
+
+####EDITOVANJE FOTO GALERIJE#####
+6. Korisnik bira poslednju galeriju iz tabele i bira opciju 'Edit'
+6.1. Korisnik unosi proizvoljne vrednosti na tile i description polja.
+6.2. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+6.3. Test proverava da li su promene sacuvane u bazi
+
+####BRISANJE FOTO GALERIJE#####
+7. Korisnik bira poslednju galeriju iz tabele i bira opciju 'Delete'
+7.1. Test proverava da li je entitet izbrisan iz baze

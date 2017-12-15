@@ -1,0 +1,40 @@
+#######RISTUPNI PODACI ZA RAD SA BAZOM##########
+PhpMyAdmin se nalazi na: http://ecotest.school.cubes.rs/phpmyadmin
+
+Parametri za kacenje na bazu:
+MySQL Host: 136.243.5.37
+MySQL Port: 33063
+MySQL User: root
+MySQL Pass: cubesqa
+
+
+###########LOG IN##########################
+1. Korisnik odlazi na web adresu:
+
+http://ecotest.school.cubes.rs/admin_session/login
+
+username: admin
+password: cubesqa`1
+
+####Users##########
+2.Korisnik bira opciju "All Users" ako je padajuca lista otvorena, ako padajuca lista nije otvorena bira opciju "Users", zatim bira opciju "All Users".
+2.1. Korisnik bira opciju "add user".
+2.2. Korisnik unosi proizvoljne vrednosti na polja Username, First Name, Last Name, i proizvoljnu mail adresu na polje Email. Korisnik bira "save" opciju i proverava da li je sacuvana vrednost u bazi.
+2.3.Korisnik bira "edit" opciju reda u tabeli koji je prethodno napravio, unosi proizvoljne vrednosti na polja Username, First Name, Last Name, i proizvoljnu mail adresu na polje Email. Korisnik bira "save" opciju i proverava da li je sacuvana vrednost u bazi.
+2.4.Korisnik bira "delete" opciju reda u tabeli koji je prethodno napravio, brise taj red i proverava da li je obrisana vrednost iz baze.
+
+######Portfolios#####
+3.Korisnik bira opciju "All Portfolios" ako je padajuca lista otvorena, ako padajuca lista nije otvorena bira opciju "Portfolios", zatim bira opciju "All Portfolios".
+3.1.Korisnik bira opciju "add portofolio".
+3.2. Korisnik unosi proizvoljne vrednosti na polja First Name, characteristic1, characteristic2, Resume, bira proizvoljnu vrednost iz combo-a "data_categories", i kaci proizvoljnu sliku sa svog file sistema i bira "save" opciju. Korisnik proverava da li je sacuvana vrednost u bazi.
+3.3. Korisnik bira edit opciju poslednjeg reda u tabeli, unosi proizvoljne vrednosti na polja First Name, characteristic1, characteristic2, Resume, bira proizvoljnu vrednost iz combo-a "data_categories", i kaci proizvoljnu sliku sa svog file sistema i bira "save" opciju. Korisnik proverava da li je sacuvana vrednost u bazi.
+3.4..Korisnik bira "delete" opciju poslednjeg reda, brise taj red i proverava da li je obrisana vrednost iz baze.
+
+####Categories######
+4.Korisnik bira opciju "Categories"ako je padajuca lista otvorena, ako padajuca lista nije otvorena bira opciju "Portfolios", zatim bira opciju "Categories".
+4.1.Korisnik bira opciju "add portofolio", unosi proizvoljan tekst na polja "name" i "resume", bira save i proverava da li je vrednost sacuvana u bazi.
+
+####Contact Info#####
+5.Korisnik bira opciju "Contact Info". Zatim opciju "Add new contact info". Zatim salje proizvoljne vrednosti na polja "location","address","address number","hours","latitude","longitude","phone","email" i "zoom". Korisnik bira save i proverava da li je vrednost sacuvana u bazi.
+5.1.Korisnik bira opciju "edit" iz poslednjeg reda, unosi proizvoljne vrednosti na polja "location","address","address number","hours","latitude","longitude","phone","email" i "zoom". Korisnik bira save i proverava da li je vrednost sacuvana u bazi.
+5.2.Korisnik bira opciju "delete" iz poslednjeg reda i brise taj red, zatim proverava da li je vrednost obrisana iz baze.
