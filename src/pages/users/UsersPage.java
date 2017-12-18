@@ -18,6 +18,8 @@ import pages.basic.Page;
  */
 public class UsersPage extends Page {
 
+    String username;
+
     private void clickOnAddUser(WebDriver driver) {
         clickOnElement(driver, By.className("btn-default"));
     }
@@ -52,10 +54,10 @@ public class UsersPage extends Page {
         if (operation.equals("new")) {
             clickOnAddUser(driver);
         } else {
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);	
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             clickOnEdit(driver);
         }
-        String username = sendtextOnUsername(driver);
+        username = sendtextOnUsername(driver);
         user.setUsername(username);
         user.setFirstName(sendtextOnFirstName(driver));
         user.setLastName(sendTextOnLastName(driver));
@@ -70,7 +72,7 @@ public class UsersPage extends Page {
 //        user.setId(Integer.valueOf(id));
         WebElement searchField = waitForVisibility(driver, By.className("input-sm"));
         searchField.sendKeys(username);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);	
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         user.setId(getIdFromLastRow(driver, By.xpath("//*[@id=\"rows-table\"]/tbody"), "data-user-id"));
         return user;
     }
@@ -85,6 +87,8 @@ public class UsersPage extends Page {
 
     public Users deleteUsers(WebDriver driver) {
         Users user = new Users();
+        WebElement searchField = waitForVisibility(driver, By.className("input-sm"));
+        searchField.sendKeys(username);
         user.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-user-id"));
         clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
         clickOnElement(driver, By.className("btn-danger"));
