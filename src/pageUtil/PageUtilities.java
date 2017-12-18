@@ -7,6 +7,8 @@ package pageUtil;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import setup.SeleniumProperties;
+import java.util.Random;
 
 /**
  *
@@ -19,16 +21,20 @@ public class PageUtilities {
     }
 
     public static int getRandomNumber() {
-        return (int) (Math.random() * 1000);
+        return new Random().nextInt(100) + 100;
     }
 
     public static String getRandomUrl() {
         return "http://" + (getRandomText()) + (".te");
     }
 
-    public static WebDriver initWebDriver() {
-        WebDriver driver = new ChromeDriver();
+    public static WebDriver initWebDriver(WebDriver driver) {
+        SeleniumProperties.init();
+        System.setProperty("webdriver.chrome.driver", SeleniumProperties.chromeDriver_exe_path);
+        driver = new ChromeDriver();
         return driver;
+        
+        
     }
     
     public static String getRandomEmail() {
@@ -55,10 +61,10 @@ public class PageUtilities {
     }
     
     public static String getRandomLatitude(){
-    return (int) (Math.random()*100) + "." + (int) (Math.random()*10000);
+    return new Random().nextInt(100) + 100 + "." + (int) (Math.random()*10000);
     }
     
     public static int getRandomZoom(){
-    return (int) (Math.random()*20);
+        return new Random().nextInt(18) + 3;
     }
 }

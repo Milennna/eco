@@ -15,7 +15,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageUtil.PageUtilities;
 import pages.basic.HomePage;
@@ -38,7 +37,7 @@ public class TestIndexSlider {
     public static void login() {
         login = new LoginPage();
         SeleniumProperties.init();
-        driver = PageUtilities.initWebDriver();
+        driver = PageUtilities.initWebDriver(driver);
         hp = login.login(driver);
         DbConnection.getConnection();
 

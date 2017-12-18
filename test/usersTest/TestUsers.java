@@ -35,7 +35,7 @@ public class TestUsers {
     
     @BeforeClass
     public static void setUpClass() {
-        driver = PageUtilities.initWebDriver();
+        driver = PageUtilities.initWebDriver(driver);
         SeleniumProperties.init();
         lp = new LoginPage();
         hp = lp.login(driver);

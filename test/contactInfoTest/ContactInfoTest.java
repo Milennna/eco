@@ -37,7 +37,7 @@ public class ContactInfoTest {
     public static void login() {
         login = new LoginPage();
         SeleniumProperties.init();
-        driver = PageUtilities.initWebDriver();
+        driver = PageUtilities.initWebDriver(driver);
         hp = login.login(driver);
         DbConnection.getConnection();
     }

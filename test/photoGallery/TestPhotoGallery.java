@@ -7,9 +7,6 @@ package photoGallery;
 
 import db.DbConnection;
 import domen.PhotoGallery;
-import static indexTest.TestIndexSlider.driver;
-import static indexTest.TestIndexSlider.hp;
-import static indexTest.TestIndexSlider.login;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -40,7 +37,7 @@ public class TestPhotoGallery {
     public static void login() {
         login = new LoginPage();
         SeleniumProperties.init();
-        driver = PageUtilities.initWebDriver();
+        driver = PageUtilities.initWebDriver(driver);
         hp = login.login(driver);
         DbConnection.getConnection();
     }

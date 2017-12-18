@@ -7,13 +7,13 @@ package portfoliosTest;
 
 import db.DbConnection;
 import domen.Portfolios;
+import java.util.Random;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.openqa.selenium.WebDriver;
 import pageUtil.PageUtilities;
 import pages.basic.HomePage;
@@ -36,7 +36,7 @@ public class TestPortfolios {
     @BeforeClass
     public static void setUpClass() {
         SeleniumProperties.init();
-        driver = PageUtilities.initWebDriver();
+        driver = PageUtilities.initWebDriver(driver);
         lp = new LoginPage();
         hp = lp.login(driver);
         DbConnection.getConnection();
@@ -89,4 +89,5 @@ public class TestPortfolios {
         org.junit.Assert.assertEquals(Boolean.TRUE, isDeleted);
     }
 
+    
 }

@@ -5,9 +5,6 @@
  */
 package categoriesTest;
 
-import static contactInfoTest.ContactInfoTest.driver;
-import static contactInfoTest.ContactInfoTest.hp;
-import static contactInfoTest.ContactInfoTest.login;
 import db.DbConnection;
 import domen.Category;
 import org.junit.After;
@@ -16,7 +13,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageUtil.PageUtilities;
@@ -41,7 +37,7 @@ public class TestCategories {
     public static void login() {
         login = new LoginPage();
         SeleniumProperties.init();
-        driver = PageUtilities.initWebDriver();
+        driver = PageUtilities.initWebDriver(driver);
         hp = login.login(driver);
         DbConnection.getConnection();
     }

@@ -38,7 +38,7 @@ public class PhotoGalleryPage extends Page {
         }
         photo.setTitle(sendTextOnTitleField(driver));
         photo.setDescritpion(sendTextOnTextField(driver));
-        uploadPhoto(driver, By.id("photo_gallery_leading_photo"), System.getProperty("user.dir")+ "\\Slike\\California.jpg");
+        uploadPhoto(driver, By.id("photo_gallery_leading_photo"), System.getProperty("user.dir")+ "/Slike/California.jpg");
         clickOnElement(driver, By.id("new_photoGallery_submit"));
         clickOnElement(driver, By.className("glyphicon-arrow-left"));
         photo.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-photo-gallery-id"));
