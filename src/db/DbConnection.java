@@ -76,11 +76,8 @@ public class DbConnection {
             
             System.out.println(query);
             
-            if (rs.next()) {
-                return false;
-            } else {
-                return true;
-            }
+            return !rs.next();
+            
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }

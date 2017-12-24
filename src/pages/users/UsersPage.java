@@ -18,8 +18,6 @@ import pages.basic.Page;
  */
 public class UsersPage extends Page {
 
-    String username;
-
     private void clickOnAddUser(WebDriver driver) {
         clickOnElement(driver, By.className("btn-default"));
     }
@@ -45,7 +43,7 @@ public class UsersPage extends Page {
         clickOnElement(driver, By.id("new_user_submit"));
     }
 
-    private void clickOnEdit(WebDriver driver) {
+    private void clickOnEditLastRow(WebDriver driver) {
         clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-pencil"));
     }
 
@@ -55,9 +53,10 @@ public class UsersPage extends Page {
             clickOnAddUser(driver);
         } else {
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            clickOnEdit(driver);
+            user.setId(getIdFromLastRow(driver, By.xpath("//*[@id=\"rows-table\"]/tbody"), "data-user-id"));
+            clickOnEditLastRow(driver);
         }
-        username = sendtextOnUsername(driver);
+        String username = sendtextOnUsername(driver);
         user.setUsername(username);
         user.setFirstName(sendtextOnFirstName(driver));
         user.setLastName(sendTextOnLastName(driver));
@@ -65,16 +64,25 @@ public class UsersPage extends Page {
 
         //user.setStatus(1);
         clickOnSave(driver);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        if (operation.equals("new")) {
+             
+            WebElement searchField = waitForVisibility(driver, By.className("input-sm"));
+            searchField.sendKeys(username);
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            user.setId(getIdFromLastRow(driver, By.xpath("//*[@id=\"rows-table\"]/tbody"), "data-user-id"));
+        } 
+        return user;
 //        String username = user.getUsername();
 //        List<WebElement> rows = findRows(driver, By.cssSelector("#rows-table > tbody"));
 //        WebElement row = returnRowWithUsername(rows, username);
 //        String id = row.getAttribute("data-user-id");
 //        user.setId(Integer.valueOf(id));
-        WebElement searchField = waitForVisibility(driver, By.className("input-sm"));
-        searchField.sendKeys(username);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        user.setId(getIdFromLastRow(driver, By.xpath("//*[@id=\"rows-table\"]/tbody"), "data-user-id"));
-        return user;
+//        WebElement searchField = waitForVisibility(driver, By.className("input-sm"));
+//        searchField.sendKeys(username);
+//        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//        user.setId(getIdFromLastRow(driver, By.xpath("//*[@id=\"rows-table\"]/tbody"), "data-user-id"));
+//        return user;
     }
 
     public Users createUser(WebDriver driver) {
@@ -87,11 +95,10 @@ public class UsersPage extends Page {
 
     public Users deleteUsers(WebDriver driver) {
         Users user = new Users();
-        WebElement searchField = waitForVisibility(driver, By.className("input-sm"));
-        searchField.sendKeys(username);
         user.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-user-id"));
         clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
         clickOnElement(driver, By.className("btn-danger"));
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         return user;
     }
 

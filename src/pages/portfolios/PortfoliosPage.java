@@ -32,13 +32,22 @@ public class PortfoliosPage extends Page {
         Select data = new Select(combo);
         List<WebElement> items = data.getOptions();
         data.deselectAll();
-//        int i = 0;
-//        while (i < 3) {
-//            i++;
         data.selectByIndex((int) (Math.random() * items.size()));
-//
-        WebElement selecetedItem = data.getFirstSelectedOption();
-        return selecetedItem.getAttribute("value");
+        data.selectByIndex((int) (Math.random() * items.size()));
+        data.selectByIndex((int) (Math.random() * items.size()));
+        data.selectByIndex((int) (Math.random() * items.size()));
+        String values = "";
+        List<WebElement> selectedItems = data.getAllSelectedOptions();
+        for (int i = 0; i < selectedItems.size(); i++) {
+            values = values + ", " + selectedItems.get(i).getAttribute("value");
+            if (i == 0) {
+                values = selectedItems.get(i).getAttribute("value");
+            }
+
+        }
+
+//        WebElement selecetedItem = data.getFirstSelectedOption();
+//        return selecetedItem.getAttribute("value");
 //        List<WebElement> selectedItem = data.getAllSelectedOptions();
 ////        return selectedItem.
 //      
@@ -46,7 +55,7 @@ public class PortfoliosPage extends Page {
 //            String value = element.getAttribute("value");
 //        }
 //        return value;
-
+        return values;
     }
 
     private String sendTextCharacteristic1(WebDriver driver) {

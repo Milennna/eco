@@ -8,7 +8,7 @@ package pages.basic;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pages.categories.CategoriesPage;
+import pages.portfolios.CategoriesPage;
 import pages.contactInfo.ContactInfoPage;
 import pages.index.IndexPage;
 import pages.photoGallery.PhotoGalleryPage;

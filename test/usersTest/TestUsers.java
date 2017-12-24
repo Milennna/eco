@@ -7,6 +7,7 @@ package usersTest;
 
 import db.DbConnection;
 import domen.Users;
+import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -59,7 +60,7 @@ public class TestUsers {
 @Test
 public void addUser(){
 Users userWeb = up.createUser(driver);
-Users userDb = DbConnection.getUser("SELECT * FROM `cms_users`WHERE id = "+ userWeb.getId());
+Users userDb = DbConnection.getUser("SELECT * FROM `cms_users` WHERE id = "+ userWeb.getId());
 Assert.assertEquals(userWeb.getId(), userDb.getId());
 Assert.assertEquals(userWeb.getUsername(), userDb.getUsername());
 Assert.assertEquals(userWeb.getFirstName(), userDb.getFirstName());
@@ -72,7 +73,7 @@ Assert.assertEquals(userWeb.getEmail(), userDb.getEmail());
 @Test
 public void editUser(){
 Users userWeb = up.editUsers(driver);
-Users userDb = DbConnection.getUser("SELECT * FROM `cms_users`WHERE id = "+ userWeb.getId());
+Users userDb = DbConnection.getUser("SELECT * FROM `cms_users` WHERE id = "+ userWeb.getId());
 Assert.assertEquals(userWeb.getId(), userDb.getId());
 Assert.assertEquals(userWeb.getUsername(), userDb.getUsername());
 Assert.assertEquals(userWeb.getFirstName(), userDb.getFirstName());
@@ -83,9 +84,9 @@ Assert.assertEquals(userWeb.getEmail(), userDb.getEmail());
 }
 @Test 
 public void deleteUser(){
-Users userWeb = up.deleteUsers(driver);
-Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_users`WHERE id = "+ userWeb.getId());
-Assert.assertEquals(Boolean.TRUE, isDeleted);
+    Users userWeb = up.deleteUsers(driver);
+    Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_users` WHERE id = "+ userWeb.getId());
+   org.junit.Assert.assertEquals(Boolean.TRUE, isDeleted);
 }
 
 }

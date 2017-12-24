@@ -5,6 +5,7 @@
  */
 package suit;
 
+import categoriesTest.TestCategories;
 import contactInfoTest.ContactInfoTest;
 import indexTest.TestIndexSlider;
 import org.junit.After;
@@ -22,7 +23,7 @@ import usersTest.TestUsers;
  * @author milena
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TestIndexSlider.class, TestPhotoGallery.class, TestPortfolios.class, TestUsers.class, ContactInfoTest.class})
+@Suite.SuiteClasses({TestIndexSlider.class, TestPhotoGallery.class, TestPortfolios.class, TestUsers.class, ContactInfoTest.class, TestCategories.class})
 public class TestSuit {
 
     @BeforeClass

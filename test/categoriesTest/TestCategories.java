@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageUtil.PageUtilities;
 import pages.basic.HomePage;
 import pages.basic.LoginPage;
-import pages.categories.CategoriesPage;
+import pages.portfolios.CategoriesPage;
 import setup.SeleniumProperties;
 
 /**

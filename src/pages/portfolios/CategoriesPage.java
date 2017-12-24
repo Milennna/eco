@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pages.categories;
+package pages.portfolios;
 
 import domen.Category;
 import org.openqa.selenium.By;
