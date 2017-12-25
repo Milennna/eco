@@ -20,8 +20,8 @@ password: cubesqa`1
 2.Korisnik bira opciju "All Users" ako je padajuca lista otvorena, ako padajuca lista nije otvorena bira opciju "Users", zatim bira opciju "All Users".
 2.1. Korisnik bira opciju "add user".
 2.2. Korisnik unosi proizvoljne vrednosti na polja Username, First Name, Last Name, i proizvoljnu mail adresu na polje Email. Korisnik bira "save" opciju i proverava da li je sacuvana vrednost u bazi.
-2.3.Korisnik bira "edit" opciju reda u tabeli koji je prethodno napravio, unosi proizvoljne vrednosti na polja Username, First Name, Last Name, i proizvoljnu mail adresu na polje Email. Korisnik bira "save" opciju i proverava da li je sacuvana vrednost u bazi.
-2.4.Korisnik bira "delete" opciju reda u tabeli koji je prethodno napravio, brise taj red i proverava da li je obrisana vrednost iz baze.
+2.3.Korisnik bira "edit" opciju poslednjeg reda u tabeli, unosi proizvoljne vrednosti na polja Username, First Name, Last Name, i proizvoljnu mail adresu na polje Email. Korisnik bira "save" opciju i proverava da li je sacuvana vrednost u bazi.
+2.4.Korisnik bira "delete" opciju poslednjeg reda u tabeli, brise taj red i proverava da li je obrisana vrednost iz baze.
 
 ######Portfolios#####
 3.Korisnik bira opciju "All Portfolios" ako je padajuca lista otvorena, ako padajuca lista nije otvorena bira opciju "Portfolios", zatim bira opciju "All Portfolios".
