@@ -88,6 +88,11 @@ public class TestPortfolios {
         Boolean isDeleted = DbConnection.isDeleted(("SELECT * FROM `cms_portfolios` WHERE id = " + portWeb.getId()));
         org.junit.Assert.assertEquals(Boolean.TRUE, isDeleted);
     }
+    
+    @Test
+    public void deleteUntil10(){
+    Portfolios portWeb = pp.deleteUntil10(driver);
+    }
 
     
 }

@@ -7,6 +7,7 @@ package pages.index;
 
 import pages.basic.Page;
 import domen.Index;
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -67,7 +68,7 @@ public class IndexPage extends Page {
 
     private Index commonSteps(WebDriver driver, String operation) {
         Index i = new Index();
-        
+
         if (operation.equals("new")) {
             clickOnAddButton(driver);
         } else {
@@ -75,20 +76,20 @@ public class IndexPage extends Page {
         }
         i.setTitle(sendTextOnTitleField(driver));
         i.setDescription(sendTextOnTextField(driver));
-        
+
         if (operation.equals("new")) {
             i.setLinkType(chooseComboCreate(driver, "InternalLink"));
         } else {
             i.setLinkType(chooseComboEdit(driver, "ExternalLink"));
         }
         i.setLinkLabel(sendTextOnLinkLabel(driver));
-        if(operation.equals("new")){
+        if (operation.equals("new")) {
             sendTextOnField(driver, By.id("internal_link_url"), PageUtilities.getRandomUrl());
-        }else {
+        } else {
             sendTextOnField(driver, By.id("external_link_url"), PageUtilities.getRandomUrl());
         }
-        
-        uploadPhoto(driver, By.id("index_slide_photo"), System.getProperty("user.dir")+ "\\Slike\\California.jpg");
+
+        uploadPhoto(driver, By.id("index_slide_photo"), System.getProperty("user.dir") + "\\Slike\\California.jpg");
         clickOnElement(driver, By.id("new_indexSlide_submit"));
         i.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
         return i;
@@ -101,6 +102,22 @@ public class IndexPage extends Page {
         clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
         clickOnElement(driver, By.className("btn-danger"));
         return i;
+
+    }
+
+    public Index deleteUntil10(WebDriver driver) {
+        Index in = new Index();
+        WebElement table = waitForVisibility(driver, By.cssSelector("#rows-table > tbody"));
+        List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
+        WebElement lastRow = tableRows.get(tableRows.size() - 1);
+        if (tableRows.size() > 10) {
+            for (int i = tableRows.size(); i > 9; i--) {
+                //in.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
+                clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
+                clickOnElement(driver, By.className("btn-danger"));
+            }
+        }
+        return in;
 
     }
 }

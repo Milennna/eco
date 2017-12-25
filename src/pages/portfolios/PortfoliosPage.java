@@ -119,4 +119,18 @@ public class PortfoliosPage extends Page {
         port.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-portfolio-id"));
         return port;
     }
+    
+    public Portfolios deleteUntil10(WebDriver driver){
+    Portfolios port = new Portfolios();
+        WebElement table = waitForVisibility(driver, By.cssSelector("#rows-table > tbody"));
+        List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
+        if (tableRows.size() > 10) {
+            for (int i = tableRows.size()-1; i > 10; i--) {
+                //in.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
+                clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
+                clickOnElement(driver, By.className("btn-danger"));
+            }
+        }
+        return port;
+    }
 }

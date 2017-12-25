@@ -81,4 +81,10 @@ public class TestCategories {
         Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_portfolios_categories`WHERE id = " + catWeb.getId());
         Assert.assertEquals(Boolean.TRUE, isDeleted);
     }
+    
+    @Test 
+    public void deleteUntil10(){
+    Category catWeb = cp.deleteUntil10(driver);
+    }
 }
+

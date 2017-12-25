@@ -6,8 +6,10 @@
 package pages.photoGallery;
 
 import domen.PhotoGallery;
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pages.basic.Page;
 
 /**
@@ -38,7 +40,7 @@ public class PhotoGalleryPage extends Page {
         }
         photo.setTitle(sendTextOnTitleField(driver));
         photo.setDescritpion(sendTextOnTextField(driver));
-        uploadPhoto(driver, By.id("photo_gallery_leading_photo"), System.getProperty("user.dir")+ "/Slike/California.jpg");
+        uploadPhoto(driver, By.id("photo_gallery_leading_photo"), System.getProperty("user.dir") + "/Slike/California.jpg");
         clickOnElement(driver, By.id("new_photoGallery_submit"));
         clickOnElement(driver, By.className("glyphicon-arrow-left"));
         photo.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-photo-gallery-id"));
@@ -59,6 +61,20 @@ public class PhotoGalleryPage extends Page {
         clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
         clickOnElement(driver, By.className("btn-danger"));
         return photo;
+    }
+
+    public PhotoGallery deleteUntil10(WebDriver driver) {
+        PhotoGallery pg = new PhotoGallery();
+        WebElement table = waitForVisibility(driver, By.cssSelector("#rows-table > tbody"));
+        List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
+        if (tableRows.size() > 10) {
+            for (int i = tableRows.size() - 1; i > 10; i--) {
+                //in.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
+                clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
+                clickOnElement(driver, By.className("btn-danger"));
+            }
+        }
+        return pg;
     }
 
 }

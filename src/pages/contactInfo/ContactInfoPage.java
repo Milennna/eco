@@ -6,8 +6,10 @@
 package pages.contactInfo;
 
 import domen.ContactInfo;
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pages.basic.Page;
 
 /**
@@ -77,7 +79,7 @@ public class ContactInfoPage extends Page {
         ci.setPhone(sendPhone(driver));
         ci.setEmail(sendEmail(driver));
         ci.setZoom(sendZoom(driver));
-        
+
         clickOnSaveButton(driver);
         ci.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-contact-id"));
         return ci;
@@ -90,11 +92,26 @@ public class ContactInfoPage extends Page {
     public ContactInfo editContact(WebDriver driver) {
         return commonSteps(driver, "edit");
     }
-    public ContactInfo deleteContact(WebDriver driver){
+
+    public ContactInfo deleteContact(WebDriver driver) {
         ContactInfo ci = new ContactInfo();
         ci.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-contact-id"));
         clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
         clickOnElement(driver, By.className("btn-danger"));
+        return ci;
+    }
+
+    public ContactInfo deleteUntil10(WebDriver driver) {
+        ContactInfo ci = new ContactInfo();
+        WebElement table = waitForVisibility(driver, By.cssSelector("#rows-table > tbody"));
+        List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
+        if (tableRows.size() > 10) {
+            for (int i = tableRows.size() - 1; i > 10; i--) {
+                //in.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
+                clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
+                clickOnElement(driver, By.className("btn-danger"));
+            }
+        }
         return ci;
     }
 }

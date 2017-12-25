@@ -97,5 +97,10 @@ public class ContactInfoTest {
         Assert.assertEquals(Boolean.TRUE, isDeleted);
 
     }
+    
+    @Test
+    public void deleteUntil10(){
+    ContactInfo contactWeb = cip.deleteUntil10(driver);
+    }
 
 }

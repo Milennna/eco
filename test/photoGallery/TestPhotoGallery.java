@@ -84,4 +84,9 @@ public class TestPhotoGallery {
         Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_photo_galleries`WHERE id = " + photoWeb.getId());
         Assert.assertEquals(Boolean.TRUE, isDeleted);
     }
+    
+    @Test
+    public void deleteUntil10(){
+    PhotoGallery photoWeb = php.deleteUntil10(driver);
+    }
 }

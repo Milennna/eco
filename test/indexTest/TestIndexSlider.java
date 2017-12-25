@@ -89,4 +89,10 @@ public class TestIndexSlider {
         Boolean isDeleted = DbConnection.isDeleted(("SELECT * FROM `cms_index_slides`where id =" + indexWeb.getId()));
         Assert.assertEquals(Boolean.TRUE, isDeleted);
     }
+    
+    @Test
+    public void testDeleteUntil10(){
+    
+        
+    }
 }

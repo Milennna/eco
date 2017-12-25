@@ -89,4 +89,9 @@ public void deleteUser(){
    org.junit.Assert.assertEquals(Boolean.TRUE, isDeleted);
 }
 
+@Test 
+public void deleteUntil10(){
+Users userWeb = up.deleteUntil10(driver);
+}
+
 }
