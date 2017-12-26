@@ -99,21 +99,13 @@ public class UsersPage extends Page {
         user.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-user-id"));
         clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
         clickOnElement(driver, By.className("btn-danger"));
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        //waitForInvisibility(driver, By.className("modal-body"));
         return user;
     }
 
-    public Users deleteUntil10(WebDriver driver) {
-        Users user = new Users();
-        WebElement table = waitForVisibility(driver, By.cssSelector("#rows-table > tbody"));
-        List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
-        if (tableRows.size() > 10) {
-            for (int i = tableRows.size() - 1; i > 10; i--) {
-                //in.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
-                clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
-                clickOnElement(driver, By.className("btn-danger"));
-            }
-        }
-        return user;
+    public void deleteUntil10(WebDriver driver) {
+        deleteUntilFirst10(driver);
+        
     }
 }

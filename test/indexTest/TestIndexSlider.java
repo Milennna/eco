@@ -92,7 +92,7 @@ public class TestIndexSlider {
     
     @Test
     public void testDeleteUntil10(){
-    
+    indexPage.deleteUntil10(driver);
         
     }
 }

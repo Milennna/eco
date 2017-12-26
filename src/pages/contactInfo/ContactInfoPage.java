@@ -17,58 +17,58 @@ import pages.basic.Page;
  * @author milena
  */
 public class ContactInfoPage extends Page {
-
+    
     private void clickOnAddButton(WebDriver driver) {
         clickOnElement(driver, By.className("glyphicon-plus"));
     }
-
+    
     private String sendTextOnLocation(WebDriver driver) {
         return sendTextOnField(driver, By.id("location"));
     }
-
+    
     private String sendTextOnAddress(WebDriver driver) {
         return sendTextOnField(driver, By.id("address"));
     }
-
+    
     private int sendNumberOnAddressNumber(WebDriver driver) {
         return sendNumberOnField(driver, By.id("address_number"));
     }
-
+    
     private String sendHours(WebDriver driver) {
         return sendHours(driver, By.id("hours"));
     }
-
+    
     private String sendLatitude(WebDriver driver) {
         return sendLatitude(driver, By.id("latitude"));
     }
-
+    
     private String sendLongitude(WebDriver driver) {
         return sendLatitude(driver, By.id("longitude"));
     }
-
+    
     private int sendPhone(WebDriver driver) {
         return sendNumberOnField(driver, By.id("phone"));
     }
-
+    
     private String sendEmail(WebDriver driver) {
         return getRandomEmail(driver, By.id("email"));
     }
-
+    
     private int sendZoom(WebDriver driver) {
         return sendZoom(driver, By.id("zoom"));
     }
-
+    
     private void clickOnSaveButton(WebDriver driver) {
         clickOnElement(driver, By.id("new_portfolio_submit"));
     }
-
+    
     private ContactInfo commonSteps(WebDriver driver, String operation) {
         ContactInfo ci = new ContactInfo();
         if (operation.equals("new")) {
             clickOnAddButton(driver);
         } else {
             clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-pencil"));
-
+            
         }
         ci.setLocation(sendTextOnLocation(driver));
         ci.setAddress(sendTextOnAddress(driver));
@@ -79,20 +79,20 @@ public class ContactInfoPage extends Page {
         ci.setPhone(sendPhone(driver));
         ci.setEmail(sendEmail(driver));
         ci.setZoom(sendZoom(driver));
-
+        
         clickOnSaveButton(driver);
         ci.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-contact-id"));
         return ci;
     }
-
+    
     public ContactInfo createContact(WebDriver driver) {
         return commonSteps(driver, "new");
     }
-
+    
     public ContactInfo editContact(WebDriver driver) {
         return commonSteps(driver, "edit");
     }
-
+    
     public ContactInfo deleteContact(WebDriver driver) {
         ContactInfo ci = new ContactInfo();
         ci.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-contact-id"));
@@ -100,18 +100,8 @@ public class ContactInfoPage extends Page {
         clickOnElement(driver, By.className("btn-danger"));
         return ci;
     }
-
-    public ContactInfo deleteUntil10(WebDriver driver) {
-        ContactInfo ci = new ContactInfo();
-        WebElement table = waitForVisibility(driver, By.cssSelector("#rows-table > tbody"));
-        List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
-        if (tableRows.size() > 10) {
-            for (int i = tableRows.size() - 1; i > 10; i--) {
-                //in.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
-                clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
-                clickOnElement(driver, By.className("btn-danger"));
-            }
-        }
-        return ci;
+    
+    public void deleteUntil10(WebDriver driver) {
+        deleteUntilFirst10(driver);
     }
 }

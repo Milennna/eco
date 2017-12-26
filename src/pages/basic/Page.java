@@ -128,7 +128,7 @@ public class Page {
 //        field.sendKeys(number);
 //        return Integer.valueOf(number);
         int number = PageUtilities.getRandomNumber();
-        field.sendKeys(""+number);
+        field.sendKeys("" + number);
         return number;
     }
 
@@ -147,12 +147,28 @@ public class Page {
         field.sendKeys(latitude);
         return latitude;
     }
-    public int sendZoom(WebDriver driver, By locator){
-    WebElement field = waitForVisibility(driver, locator);
-    field.clear();
-    int number = PageUtilities.getRandomZoom();
-    field.sendKeys(""+number);
-    return number;
+
+    public int sendZoom(WebDriver driver, By locator) {
+        WebElement field = waitForVisibility(driver, locator);
+        field.clear();
+        int number = PageUtilities.getRandomZoom();
+        field.sendKeys("" + number);
+        return number;
     }
-    
+
+    public void deleteUntilFirst10(WebDriver driver) {
+        WebElement table = waitForVisibility(driver, By.cssSelector("#rows-table > tbody"));
+        List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
+        if (tableRows.size() > 10) {
+            for (int i = tableRows.size() - 1; i > 10; i--) {
+                //in.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
+                clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
+                clickOnElement(driver, By.className("btn-danger"));
+            }
+        }
+    }
+    public void waitForInvisibility(WebDriver driver, By locator){
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
 }

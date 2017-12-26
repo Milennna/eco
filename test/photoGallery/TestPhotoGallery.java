@@ -57,7 +57,6 @@ public class TestPhotoGallery {
     @After
     public void tearDown() {
 
-        
     }
 
     @Test
@@ -75,7 +74,7 @@ public class TestPhotoGallery {
         PhotoGallery photoDb = DbConnection.getPhotoGallery("SELECT * FROM `cms_photo_galleries`WHERE id = " + photoWeb.getId());
         Assert.assertEquals(photoWeb.getId(), photoDb.getId());
         Assert.assertEquals(photoWeb.getDescritpion(), photoDb.getDescritpion());
-        
+
     }
 
     @Test
@@ -84,9 +83,9 @@ public class TestPhotoGallery {
         Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_photo_galleries`WHERE id = " + photoWeb.getId());
         Assert.assertEquals(Boolean.TRUE, isDeleted);
     }
-    
+
     @Test
-    public void deleteUntil10(){
-    PhotoGallery photoWeb = php.deleteUntil10(driver);
+    public void deleteUntil10() {
+        php.deleteUntil10(driver);
     }
 }

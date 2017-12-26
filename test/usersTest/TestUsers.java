@@ -79,7 +79,6 @@ Assert.assertEquals(userWeb.getUsername(), userDb.getUsername());
 Assert.assertEquals(userWeb.getFirstName(), userDb.getFirstName());
 Assert.assertEquals(userWeb.getLastName(), userDb.getLastName());
 Assert.assertEquals(userWeb.getEmail(), userDb.getEmail());
-//Assert.assertEquals(userWeb.getStatus(), userDb.getStatus());
 
 }
 @Test 
@@ -91,7 +90,7 @@ public void deleteUser(){
 
 @Test 
 public void deleteUntil10(){
-Users userWeb = up.deleteUntil10(driver);
+up.deleteUntil10(driver);
 }
 
 }

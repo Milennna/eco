@@ -105,19 +105,8 @@ public class IndexPage extends Page {
 
     }
 
-    public Index deleteUntil10(WebDriver driver) {
-        Index in = new Index();
-        WebElement table = waitForVisibility(driver, By.cssSelector("#rows-table > tbody"));
-        List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
-        WebElement lastRow = tableRows.get(tableRows.size() - 1);
-        if (tableRows.size() > 10) {
-            for (int i = tableRows.size(); i > 9; i--) {
-                //in.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
-                clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
-                clickOnElement(driver, By.className("btn-danger"));
-            }
-        }
-        return in;
+    public void deleteUntil10(WebDriver driver) {
+        deleteUntilFirst10(driver);
 
     }
 }

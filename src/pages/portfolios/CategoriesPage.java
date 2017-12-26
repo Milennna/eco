@@ -65,17 +65,7 @@ public class CategoriesPage extends Page {
         return cat;
     }
 
-    public Category deleteUntil10(WebDriver driver) {
-        Category cat = new Category();
-        WebElement table = waitForVisibility(driver, By.cssSelector("#rows-table > tbody"));
-        List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
-        if (tableRows.size() > 10) {
-            for (int i = tableRows.size(); i > 11; i--) {
-                //in.setId(getIdFromLastRow(driver, By.cssSelector("#rows-table > tbody"), "data-index-slide-id"));
-                clickOnLastRow(driver, By.cssSelector("#rows-table > tbody"), By.className("glyphicon-trash"));
-                clickOnElement(driver, By.className("btn-danger"));
-            }
-        }
-        return cat;
+    public void deleteUntil10(WebDriver driver) {
+        deleteUntilFirst10(driver);
     }
 }

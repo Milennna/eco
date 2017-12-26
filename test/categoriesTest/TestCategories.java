@@ -84,7 +84,7 @@ public class TestCategories {
     
     @Test 
     public void deleteUntil10(){
-    Category catWeb = cp.deleteUntil10(driver);
+    cp.deleteUntil10(driver);
     }
 }
 

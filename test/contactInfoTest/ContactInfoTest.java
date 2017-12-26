@@ -100,7 +100,7 @@ public class ContactInfoTest {
     
     @Test
     public void deleteUntil10(){
-    ContactInfo contactWeb = cip.deleteUntil10(driver);
+    cip.deleteUntil10(driver);
     }
 
 }
